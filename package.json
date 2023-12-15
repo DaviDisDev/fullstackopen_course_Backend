@@ -19,10 +19,12 @@
   "homepage": "https://github.com/DaviDisDev/fullstackopen_course_Backend#readme",
   "description": "",
   "dependencies": {
+    "cors": "^2.8.5",
     "express": "^4.18.2",
     "morgan": "^1.10.0"
   },
   "devDependencies": {
+    "heroku": "^8.7.1",
     "nodemon": "^3.0.2"
   }
 }
