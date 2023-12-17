@@ -1,13 +1,16 @@
 {
   "name": "backend",
   "version": "0.0.1",
+  "engines": {
+    "node": "20.x"
+  },
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Matti Luukkainen",
+  "author": "David P",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -24,7 +27,6 @@
     "morgan": "^1.10.0"
   },
   "devDependencies": {
-    "heroku": "^8.7.1",
     "nodemon": "^3.0.2"
   }
 }
