@@ -4,7 +4,6 @@ const app = express();
 
 app.use(express.static('build'))
 
-
 const cors = require('cors');
 app.use(cors());
 
@@ -57,7 +56,7 @@ app.get('/info', (request, response) => {
 
 app.delete('/api/persons/:id', (request, response, next) => {
   persons.findByIdAndDelete(request.params.id)
-    .then(result => {
+    .then(() => {
       response.status(204).end()
     })
     .catch(error => next(error))
@@ -92,8 +91,11 @@ app.post('/api/persons', (request, response, next) => {
 
 app.put('/api/persons/:id', (request, response, next) => {
   const { number } = request.body;
+  if (number.length < 8) {
+    return response.status(400).json({ error: 'The number must be 8 digits.' });
+  }
 
-  persons.findByIdAndUpdate(request.params.id, { number }, { new: true })
+    persons.findByIdAndUpdate(request.params.id, { number }, { new: true })
     .then(updatedPerson => {
       if (updatedPerson) {
         response.json(updatedPerson);
@@ -102,6 +104,8 @@ app.put('/api/persons/:id', (request, response, next) => {
       }
     })
     .catch(error => next(error));
+
+ 
 });
 
 const unknownEndpoint = (request, response) => {
